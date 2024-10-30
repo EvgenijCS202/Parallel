@@ -11,12 +11,13 @@ void operations(int **a,
 #pragma omp parallel for
     for (size_t i = 0; i < row; ++i)
     {
-#pragma omp parallel for
+#pragma omp parallel for simd
         for (size_t j = 0; j < col; ++j)
         {
             a[i][j] = a[i][j] + b[i][j];
             a[i][j] = a[i][j] - b[i][j];
         }
+#pragma omp end parallel for simd
     }
 }
 
